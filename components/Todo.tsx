@@ -1,6 +1,6 @@
 "use client";
 
-import { compleTodo } from "@/utils/action";
+import { compleTodo, deleteTodo } from "@/utils/action";
 import { useState, useTransition } from "react";
 
 interface Todo {
@@ -49,7 +49,14 @@ const Todo = ({ todo }: { todo: Todo }) => {
             });
           }}
         />
-        <button className="bg-red-500 text-white px-2 py-1 rounded">
+        <button
+          className="bg-red-500 text-white px-2 py-1 rounded"
+          onClick={() => {
+            startTransition(() => {
+              deleteTodo(todo.id);
+            });
+          }}
+        >
           Delete
         </button>
       </li>

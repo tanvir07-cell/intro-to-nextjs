@@ -8,6 +8,15 @@ export const getTodos = async () => {
   return await prisma.todo.findMany();
 };
 
+export const deleteTodo = async (id) => {
+  await prisma.todo.delete({
+    where: {
+      id,
+    },
+  });
+  revalidatePath("/todos");
+};
+
 export const compleTodo = async (id, isChecked) => {
   try {
     const todo = await prisma.todo.update({
