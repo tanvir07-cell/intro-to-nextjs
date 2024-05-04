@@ -1,10 +1,6 @@
 import TodoList from "@/components/TodoList";
+import { getTodos } from "@/utils/action";
 import prisma from "@/utils/db";
-
-const getTodos = async () => {
-  await new Promise((resolve, reject) => setTimeout(reject, 2000));
-  return await prisma.todo.findMany();
-};
 
 const TodoPage = async () => {
   const getAllTodos = await getTodos();
