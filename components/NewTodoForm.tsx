@@ -1,17 +1,17 @@
-"use client";
-
-import React, { useState } from "react";
+import { createTodo } from "@/utils/action";
 
 const NewTodoForm = () => {
-  const [todo, setTodo] = useState("");
   return (
-    <form>
+    <form action={createTodo}>
       <input
         type="text"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+        name="content"
+        id="content"
+        className="border-green-400"
       />
-      <button type="submit">Add Todo</button>
+      <button type="submit" className="btn bg-green-400 px-4 py-2 rounded">
+        Add Todo
+      </button>
     </form>
   );
 };
